@@ -12,19 +12,44 @@ base {
 
 
 repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
+    mavenCentral()
+    maven {
+        url = "https://maven.terraformersmc.com/"
+    }
+    maven {
+        url = "https://raw.githubusercontent.com/Kyubion-Studios/Mod-Resources/main/maven/"
+    }
+    maven {
+        url = "https://maven.isxander.dev/releases"
+    }
+    maven {
+        url = "https://maven.bawnorton.com/releases"
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
-    // To change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "wily.legacy:legacy-fabric:${project.minecraft_version}-${project.legacy4j_version}"
+    compileOnly "wily.factory_api:factory_api-fabric:${project.minecraft_version}-${project.factory_api_version}"
+    implementation "maven.modrinth:vivecraft:${project.minecraft_version}-${project.vivecraft_version}-fabric"
+    include implementation(annotationProcessor("com.github.bawnorton.mixinsquared:mixinsquared-fabric:0.3.7-beta.3"))
+    //implementation include("io.github.mightguy:symspell-lib:6.6.154", "com.sangupta:murmur:1.0.0", "org.apache.commons:commons-collections4:4.5.0")
+    //compileOnly "org.apache.commons:commons-lang3:3.11", "org.slf4j:slf4j-api:1.7.25"
+
 }
 
 processResources {

@@ -6,6 +6,9 @@
   "mixins": [
   ],
   "client": [
+    "client.SettingsScreenMixin",
+    "client.TitleScreenMixin",
+    "client.VRArmRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
