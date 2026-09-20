@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "legacyvr",
+  "version": "${version}",
+  "name": "LegacyVR",
+  "description": "Makes Legacy4J compatible with Vivecraft",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/legacyvr/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "dev.redrain0o0.legacyvr.client.LegacyvrClient"
+    ],
+    "main": [
+      "dev.redrain0o0.legacyvr.Legacyvr"
+    ]
+  },
+  "mixins": [
+    "legacyvr.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
